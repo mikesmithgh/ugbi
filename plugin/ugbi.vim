@@ -23,7 +23,7 @@ function! UgbiEnable()
   endfor
 endfunction
 
-function UgbiDisable()
+function! UgbiDisable()
   let l:keys = get(s:, "keys", [])
   for key in l:keys
     execute 'iunmap ' . key

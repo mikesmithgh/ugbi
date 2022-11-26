@@ -12,7 +12,12 @@ let g:autoloaded_ugbi = 1
 
 
 function! ugbi#SamlFileType() abort
-  set syntax=saml  
+  setlocal syntax=saml  
+  setlocal buftype=nofile
+  setlocal bufhidden=wipe
+  setlocal noswapfile
+  setlocal shortmess=a
+  setlocal nomodifiable
 endfunction
 
 
@@ -21,56 +26,53 @@ function! ugbi#ShowSam(key)
     return ''
   endif
 
-  let g:prev_char = get(g:, "prev_char", v:null)
-  let s:ugbi_repeat_count = get(s:, "ugbi_repeat_count", 1)
-
-  let s:ugbi_repeat_count += 1
-  let g:ugbi_msg = get(g:, "ugbi_msg", v:null)
+  let s:prev_char = get(s:, "prev_char", v:null)
+  let s:repeat_count = get(s:, "repeat_count", 1) + 1
+  let s:msg = get(s:, "ugbi_msg", v:null)
 
   echohl Normal
-  if a:key == g:prev_char
-    if s:ugbi_repeat_count >= 41
+  if a:key == s:prev_char
+    if s:repeat_count >= 41
       echohl ErrorMsg
-      let g:ugbi_msg = printf("Say '%s' again, I dare you!", a:key)
-    elseif s:ugbi_repeat_count >= 30
+      let s:msg = printf("Say '%s' again, I dare you!", a:key)
+    elseif s:repeat_count >= 30
       echohl WarningMsg
-      let g:ugbi_msg = printf("Say '%s' again, I dare you!", a:key)
-    elseif s:ugbi_repeat_count >= 20
+      let s:msg = printf("Say '%s' again, I dare you!", a:key)
+    elseif s:repeat_count >= 20
       echohl Question
-      let g:ugbi_msg = printf("Say '%s' again!", a:key)
-    elseif s:ugbi_repeat_count >= 15
-      let g:ugbi_msg = printf("Say '%s' again", a:key)
+      let s:msg = printf("Say '%s' again!", a:key)
+    elseif s:repeat_count >= 15
+      let s:msg = printf("Say '%s' again", a:key)
     endif
-    if s:ugbi_repeat_count >= 15
-      echo g:ugbi_msg
+    if s:repeat_count >= 15
+      echo s:msg
     endif
   else
     " clear previous message and reset count
-    if g:ugbi_msg != v:null
-      let g:ugbi_msg = v:null  
+    if s:msg != v:null
+      let s:msg = v:null  
       echo ''
     endif
-    let s:ugbi_repeat_count = 1
+    let s:repeat_count = 1
   endif
   echohl Normal
 
-  let g:prev_char = a:key
+  let s:prev_char = a:key
 
-  if s:ugbi_repeat_count >= 42
-    execute 'silent! tab new'
+  if s:repeat_count >= 42
+    let s:repeat_count = 0
+
+    silent! tabnew ugbi.saml
     set modifiable
-    setlocal buftype=nofile
-    setlocal bufhidden=wipe
-    setlocal noswapfile
-    setlocal shortmess=a
+
+    " add whitespace to hide sam
     call append(line("."),   repeat([""], winheight(0) - 1))
-    execute "silent! ".winheight(0)."r" s:path."/../resources/sam.txt"
-    execute 0
-    let s:ugbi_repeat_count = 0
+    " copy sam into buffer and go back to top
+    execute "silent! ".winheight(0)."r" s:path."/../resources/sam.txt | 0"
     redraw
-    silent! file ugbi.saml
-    execute 'silent! /\%1c\S'
-    execute 'silent! /Sam was here'
+
+    silent! /\%1c\S
+    silent! '/Sam was here'
     let c = 0
     while c <= 80
       execute 'normal! j'
@@ -101,9 +103,9 @@ function! ugbi#ShowSam(key)
   return a:key
 endfunction
 
-function ugbi#SayOneMoreTime()
-  let g:ugbi_more = 0
-  let g:ugbi_more = confirm(printf("Say '%s' one more time? (Press CTRL-C to abort)", g:prev_char), printf("Say '&%s' one more time!", g:prev_char), 0,  "Error")
+function! ugbi#SayOneMoreTime()
+  let s:ugbi_more = 0
+  let s:ugbi_more = confirm(printf("Say '%s' one more time? (Press CTRL-C to abort)", s:prev_char), printf("Say '&%s' one more time!", s:prev_char), 0,  "Error")
 endfunction
 
 " vim: set shiftwidth=2 tabstop=2 softtabstop=0:
