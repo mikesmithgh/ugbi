@@ -1,2 +1,2 @@
-autocmd BufRead,BufNewFile *.saml set filetype=saml
+autocmd BufRead,BufNewFile ugbi.saml set filetype=saml
 
