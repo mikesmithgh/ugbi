@@ -20,6 +20,6 @@ syntax match eye "\VJJ7Y?!:.:.     .."
 syntax match eye "\V.^!~!~:^!JJ~~"
 
 highlight link sam WarningMsg
-highlight link eye ErrorMsg
+highlight link eye Comment
 " vim: set shiftwidth=2 tabstop=2 softtabstop=0:
 

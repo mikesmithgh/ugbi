@@ -79,6 +79,7 @@ function! ugbi#ShowSam(key)
       let c +=1
       redraw
     endwhile
+    normal! H
 
     let l:popup_msg=printf("Say '%s' again. Say '%s' one more time!%65s%28sUserGettingBored    When the user presses the same key 42 times.%21sJust kidding! :-)", a:key, a:key, '', '', '')
     call popup_create(l:popup_msg, #{
@@ -118,11 +119,10 @@ function! ugbi#SayOneMoreTime()
     redraw
     call ugbi#SayOneMoreTime()
   else
-    silent! ?^\n
-    silent! /Sam was here
+    normal! H
     let c = 0
     while c <= 80
-      execute 'normal! k'
+      execute "normal! \<C-y>"
       execute 'sleep 20ms'
       let c +=1
       redraw
