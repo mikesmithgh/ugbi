@@ -4,5 +4,12 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-call ugbi#SamlFileType()
+setlocal syntax=saml  
+setlocal buftype=nofile
+setlocal bufhidden=wipe
+setlocal noswapfile
+setlocal shortmess=a
+setlocal nomodifiable
+
+" vim: set shiftwidth=2 tabstop=2 softtabstop=0:
 
