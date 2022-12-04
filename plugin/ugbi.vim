@@ -33,7 +33,7 @@ endfunction
 
 augroup ugbi
   autocmd!
-  autocmd CursorHold *.saml execute 'call ugbi#SayOneMoreTime()'
+  autocmd CursorHold *.saml execute 'call ugbi#SayOneMoreTime(2)'
 augroup end
 
 execute 'command! UgbiEnable call UgbiEnable()'

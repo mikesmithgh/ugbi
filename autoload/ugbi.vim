@@ -44,6 +44,9 @@ function! ugbi#ShowSam(key)
       let s:msg = l:count_msg
     endif
     if s:repeat_count >= 15 || l:show_count
+      if l:show_count
+        let s:msg = printf("'%s':%02d %s", a:key, s:repeat_count, s:msg)
+      endif
       echo s:msg
     endif
   else
@@ -64,26 +67,25 @@ function! ugbi#ShowSam(key)
     silent! tabnew ugbi.saml
     setlocal modifiable
 
+    let l:height = winheight(0)
+    execute "silent! 0r ".s:path."/../plugin/sammy.ascii | 0"
     " add whitespace to hide sam
-    call append(line("."),   repeat([""], winheight(0) - 1))
-    " copy sam into buffer and go back to top
-    execute "silent! ".winheight(0)."r" s:path."/../resources/sam.txt | 0"
+    execute 'silent! call append(line('0'), repeat([""], height)) | 0'
     redraw
-
-    silent! /\%1c\S
-    silent! /Sam is here
     let c = 0
-    while c <= 80
-      execute 'normal! j'
-      execute 'sleep 20ms'
+    while c <= l:height
+      execute 'silent! normal! ggdd'
+      execute 'silent! sleep 20ms'
       let c +=1
       redraw
     endwhile
-    normal! H
+    normal! gg
+    call sammy0#Highlight()
+    call sammy1#Highlight()
 
     let l:popup_msg=printf("Say '%s' again. Say '%s' one more time!%65s%28sUserGettingBored    When the user presses the same key 42 times.%21sJust kidding! :-)", a:key, a:key, '', '', '')
     call popup_create(l:popup_msg, #{
-          \ line: "cursor",
+          \ line: 40,
           \ col: 10 ,
           \ time: 5000,
           \ minwidth: 65,
@@ -105,30 +107,28 @@ function! ugbi#ShowSam(key)
   return a:key
 endfunction
 
-function! ugbi#SayOneMoreTime()
+function! ugbi#SayOneMoreTime(count)
   let s:ugbi_more = 0
   try 
     let s:ugbi_more = confirm(printf("Say '%s' one more time? (Press CTRL-C to abort)", s:prev_char), printf("Say '&%s' one more time!", s:prev_char), 0,  "Error")
   finally
-  if s:ugbi_more
-    if &syntax == 'saml' || &syntax == 'saml_angriest'
-      setlocal syntax=saml_angry
-    elseif &syntax == 'saml_angry'
-      setlocal syntax=saml_angriest
-    endif
-    redraw
-    call ugbi#SayOneMoreTime()
-  else
-    normal! H
-    let c = 0
-    while c <= 80
-      execute "normal! \<C-y>"
-      execute 'sleep 20ms'
-      let c +=1
+    if s:ugbi_more && a:count <= 3
+      execute 'call sammy'.a:count.'#Highlight()'
       redraw
-    endwhile
-    quit
-  endif
+      call ugbi#SayOneMoreTime(a:count + 1)
+    else
+      setlocal modifiable
+      call clearmatches()
+      redraw
+      let c = 0
+      while c <= winheight(0)
+        execute 'silent! normal! ggdd'
+        execute 'silent! sleep 20ms'
+        let c +=1
+        redraw
+      endwhile
+      tabclose
+    endif
   endtry
 endfunction
 
