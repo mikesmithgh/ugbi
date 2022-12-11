@@ -40,6 +40,7 @@ Install using your favorite package manager, or use Vim's built-in package suppo
 mkdir -p ~/.vim/pack/mkesmithgh/start
 cd ~/.vim/pack/mkesmithgh/start
 git clone https://github.com/mikesmithgh/ugbi.git
+vim -u NONE -c "helptags ugbi/doc" -c q
 ```
 Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
