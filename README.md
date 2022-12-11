@@ -3,7 +3,9 @@ Ugbi is a Vim plugin that provides critical unimplemented functionally that some
 I was perusing the Vim documentation for autocommands, I discovered `UserGettingBored`. I immediately knew something was wrong because it is
 impossible for anyone to get bored while using Vim. After many sleepless nights, I attempted to trigger the event by repeating the same key
 42 times. The anticipation grew upon each click `llllllllllllllllllllllllllllllllllllllllll` then, as I originally expected, nothing 
-happened. This further solidified that it is indeed impossible for a user to get bored in Vim. But wait, there was a second line in the
+happened. This further solidified that it is indeed impossible for a user to get bored in Vim. 
+
+But wait, there was a second line in the
 documentation. It said `Just kidding! :-)`. It was at that moment that I realized someone meant to implement Samuel L. Jackson in the
 vimaverse. It has been a grueling 46 years, but the hard work has finally paid off. I'd like to thank my sponsor, that random person on Reddit `r/vim`.
 
