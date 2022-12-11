@@ -36,7 +36,7 @@ COMMANDS                                        *ugbi-commands*
 :UgbiEnable             Enable the plugin and setup keymappings to intercept 
                         alphanumeric characters in |Insert-mode|.
 
-                                                *:UgbiDisable
+                                                *:UgbiDisable*
 :UgbiDisable            Disable the plugin and remove keymappings that 
                         intercept alphanumeric characters in |Insert-mode|.
 

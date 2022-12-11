@@ -73,9 +73,9 @@ let g:ugbi_show_count = 0
 
 ## Ackowledgements
 - [Samuel L. Jackson](https://en.wikipedia.org/wiki/Samuel_L._Jackson) - The inspiration, couldn't have done it without you Sammy!
-- [Tim Pope](https://github.com/tpope) - Excellent reference for Vim plug-in development
-- [artem](https://github.com/FineFindus/artem) - Used to generate ASCII art in truecolor
-- [text-image.com](https://www.text-image.com/) - Initially used to render ASCII art but size of art was too large to fit in a normal sized screen
+- [Tim Pope](https://github.com/tpope) - Excellent reference for Vim plug-in development.
+- [artem](https://github.com/FineFindus/artem) - Used to generate ASCII art in truecolor.
+- [text-image.com](https://www.text-image.com/) - Initially used to render ASCII art but size of art was too large to fit in a normal sized screen.
 - [baleia.nvim](https://github.com/m00qek/baleia.nvim) - Plugin worked perfectly for highlighting. However, it is only available on Neovim. I was able to reference `nvim_buf_add_highlight()` to discover similar functionaly in Vim `matchaddpos()` to positionally highlight instead of using a regex.
 - [Colorizer](https://github.com/chrisbra/Colorizer) - Initially attempted highlighting with this plugin. Although it worked, there was bad lag due to regex matching. 
-- [AutoComplPop](https://github.com/vim-scripts/AutoComplPop) - Plugin referenced for intercepting keystrokes
+- [AutoComplPop](https://github.com/vim-scripts/AutoComplPop) - Plugin referenced for intercepting keystrokes.
