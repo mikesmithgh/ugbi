@@ -46,7 +46,7 @@ Plug 'mikesmitgh/ugbi.vim'
 
 For the best experience, use a terminal that supports truecolor and enable the `termguicolors` option in your Vim configuration.
 ```vim
-    set termguicolors
+set termguicolors
 ```
 
 ## Usage
