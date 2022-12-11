@@ -1,0 +1,63 @@
+*ugbi.txt*  Say |UserGettingBored| one more time!
+
+Author:  Mike Smith
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                    *ugbi*
+
+Ugbi implements the autocommand event |UserGettingBored|.
+Repeating the same alphanumeric character 42 times in |Insert-mode| will
+trigger Samuel L. Jackson.
+
+INSTALLATION                                    *ugbi-installation*
+Install using your favorite package manager, or use Vim's built-in package support:
+>
+    mkdir -p ~/.vim/pack/mkesmithgh/start
+    cd ~/.vim/pack/mkesmithgh/start
+    git clone https://github.com/mikesmithgh/ugbi.git
+<
+
+Using https://github.com/junegunn/vim-plug
+>
+    Plug 'mikesmitgh/ugbi.vim'
+
+
+For the best experience, use a terminal that supports truecolor and enable the
+|termguicolors| option in your Vim configuration.
+>
+    set termguicolors
+<
+
+
+COMMANDS                                        *ugbi-commands*
+
+
+                                                *:UgbiEnable*
+:UgbiEnable             Enable the plugin and setup keymappings to intercept 
+                        alphanumeric characters in |Insert-mode|.
+
+                                                *:UgbiDisable
+:UgbiDisable            Disable the plugin and remove keymappings that 
+                        intercept alphanumeric characters in |Insert-mode|.
+
+
+CUSTOMIZATION                                   *ugbi-customization*
+>
+    " Enable the plugin
+    " Enabled by default, set to 0 to disable and 1 to enable
+    " After setting to disabled, you will need to run the comman UgbiDisable or restart Vim
+    let g:ugbi_enabled = 1
+    
+    " Show the current number of repeated characters while typing
+    " Disabled by default, set to 0 to disable and 1 to enable
+    let g:ugbi_show_count = 0
+<
+
+
+ABOUT                                           *ugbi-about*
+
+Grab the latest version or report a bug on GitHub:
+
+https://github.com/mikesmithgh/ugbi
+
+ vim:tw=78:et:ft=help:norl:

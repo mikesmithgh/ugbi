@@ -38,11 +38,15 @@ Install using your favorite package manager, or use Vim's built-in package suppo
 mkdir -p ~/.vim/pack/mkesmithgh/start
 cd ~/.vim/pack/mkesmithgh/start
 git clone https://github.com/mikesmithgh/ugbi.git
-vim -u NONE -c "helptags ugbi/doc" -c q
 ```
 Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
-Plug 'mikesmitgh/ugbi.vim
+Plug 'mikesmitgh/ugbi.vim'
+```
+
+For the best experience, use a terminal that supports truecolor and enable the `termguicolors` option in your Vim configuration.
+```vim
+    set termguicolors
 ```
 
 ## Usage
@@ -50,13 +54,10 @@ Only alphanumeric `[a-zA-Z0-9]` keys in insert mode trigger a count that is used
 in insert mode to trigger the plugin. To trigger the plugin, open a buffer and repeat the same character 42 times in insert mode.
 
 ## Commands
-```vim
-" Enable the plugin and setup keymappings to intercept alphanumeric characters in insert mode.
-:UgbiEnable
-
-" Disable the plugin and remove keymappings that intercept alphanumeric characters in insert mode.
-:UgbiDisable
-```
+| Command        | Action                                                                                           |
+| ---            | ---                                                                                              |
+| `:UgbiEnable`  | Enable the plugin and setup keymappings to intercept alphanumeric characters in insert mode.     |
+| `:UgbiDisable` | Disable the plugin and remove keymappings that intercept alphanumeric characters in insert mode. |
 
 ## Customization
 ```vim
