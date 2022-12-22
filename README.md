@@ -7,7 +7,7 @@ happened. This further solidified that it is indeed impossible for a user to get
 
 But wait, there was a second line in the
 documentation. It said `Just kidding! :-)`. It was at that moment that I realized someone meant to implement Samuel L. Jackson in the
-vimaverse. It has been a grueling 46 years, but the hard work has finally paid off. I'd like to thank my sponsor, that random person on Reddit `r/vim`.
+vimaverse. It has been a grueling 46 years, but the hard work has finally paid off. I'd like to thank my sponsor, that random person on Reddit [r/vim](https://www.reddit.com/r/vim).
 
 <pre>
 
