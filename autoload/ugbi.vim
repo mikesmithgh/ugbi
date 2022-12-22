@@ -127,7 +127,7 @@ function! ugbi#SayOneMoreTime(count)
         let c +=1
         redraw
       endwhile
-      tabclose
+      tabclose!
     endif
   endtry
 endfunction

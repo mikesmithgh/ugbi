@@ -46,9 +46,14 @@ Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
 Plug 'mikesmitgh/ugbi.vim'
 ```
-
-For the best experience, use a terminal that supports truecolor and enable the `termguicolors` option in your Vim configuration.
+Using [Vundle](https://github.com/VundleVim/Vundle.vim)
 ```vim
+Plugin 'mikesmitgh/ugbi.vim'
+```
+
+For the best experience, use VIM version 9.0 or greater compiled with the [+termguicolors](https://vimhelp.org/various.txt.html#%2Btermguicolors) feature.  
+Use a terminal that supports truecolor and enable the `termguicolors` option in your Vim configuration.
+```vimuu
 set termguicolors
 ```
 
