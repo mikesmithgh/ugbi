@@ -39,7 +39,16 @@ augroup end
 execute 'command! UgbiEnable call UgbiEnable()'
 execute 'command! UgbiDisable call UgbiDisable()'
 
-call UgbiEnable()
+if v:version >= 800
+  call UgbiEnable()
+else
+  echomsg "Ugbi is not compatible with version ".v:version." of vim. Upgrade to version 8.0 or greater."
+  let s:path = expand('<sfile>:p:h')
+  let s:lines = readfile(s:path."/../plugin/sammy.ascii")
+  for s:line in s:lines
+    echo s:line
+  endfor
+endif
 
 " vim: set shiftwidth=2 tabstop=2 softtabstop=0:
 
