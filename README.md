@@ -44,11 +44,11 @@ vim -u NONE -c "helptags ugbi/doc" -c q
 ```
 Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
-Plug 'mikesmithgh/ugbi.vim'
+Plug 'mikesmithgh/ugbi'
 ```
 Using [Vundle](https://github.com/VundleVim/Vundle.vim)
 ```vim
-Plugin 'mikesmithgh/ugbi.vim'
+Plugin 'mikesmithgh/ugbi'
 ```
 
 For the best experience, use VIM version 9.0 or greater compiled with the [+termguicolors](https://vimhelp.org/various.txt.html#%2Btermguicolors) feature.  
