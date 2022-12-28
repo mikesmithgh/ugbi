@@ -57,6 +57,9 @@ Use a terminal that supports truecolor and enable the `termguicolors` option in 
 set termguicolors
 ```
 
+## Compatibility
+Ugbi is compatible with Vim 8.0 and greater. If you are using a version less than 8.0 then the plugin will not work.
+
 ## Usage
 Only alphanumeric `[a-zA-Z0-9]` keys in insert mode trigger a count that is used by this plugin. This is done by remapping the keys
 in insert mode to trigger the plugin. To trigger the plugin, open a buffer and repeat the same character 42 times in insert mode.
